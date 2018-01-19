@@ -8,7 +8,7 @@ import {
 import initialState from '../store/initialState';
 import injectReducer from './helper/injectReducer';
 
-export default injectReducer([], {
+export default injectReducer(initialState, {
     [`${CREATE_POST}`]: (state, action) => [...state, action.post],
 
     [`${REMOVE_POST}`]: (state, action) => state.filter(cur => cur.id !== action.id),

@@ -1,25 +1,35 @@
 import React from 'react';
 import CurrentPost from './CurrentPost';
 import initialState from '../../store/initialState';
-import { Provider } from 'react-redux';
-import store from '../../store/configurateState'
+import { connect } from 'react-redux'
 
 class Container extends React.Component{
     render(){
         return (
-            <Provider store={store}>
-                {initialState.map(cur => {
-                    return (
-                        <CurrentPost
-                            title={cur.title}
-                            img={cur.img}
-                            description={cur.description}
-                            date={cur.date}
-                        />
-                    )
-                })}
-            </Provider>
+            <div>
+                {
+                    initialState.map((cur, index) => {
+                        return (
+                            <CurrentPost
+                                key={index}
+                                title={cur.title}
+                                img={cur.img}
+                                description={cur.description}
+                                date={cur.date}
+                            />
+                        )
+                    })
+                }
+            </div>
         )
     }
 }
-export default Container;
+export default connect(
+    state => {
+        console.log(state);
+        return {state: state}
+    },
+    dispatch => ({
+
+    })
+)(Container);
