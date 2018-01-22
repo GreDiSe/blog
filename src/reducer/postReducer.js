@@ -5,15 +5,12 @@ import {
     EDIT_POST
 } from "../action/actionTypes";
 
-import initialState from '../store/initialState';
 import injectReducer from './helper/injectReducer';
 
-export default injectReducer(initialState, {
+export default injectReducer([], {
     [`${CREATE_POST}`]: (state, action) => [...state, action.post],
 
     [`${REMOVE_POST}`]: (state, action) => state.filter(cur => cur.id !== action.id),
-
-    [`${GET_ALL_POSTS}`]: (state, action) => [...initialState],
 
     [`${EDIT_POST}`]: (state, action) => {
         const newState = state.filter(cur => cur.id !== action.id);

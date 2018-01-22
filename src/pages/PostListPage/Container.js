@@ -1,6 +1,5 @@
 import React from 'react';
 import CurrentPost from './CurrentPost';
-import initialState from '../../store/initialState';
 import { connect } from 'react-redux'
 
 class Container extends React.Component{
@@ -8,7 +7,7 @@ class Container extends React.Component{
         return (
             <div>
                 {
-                    initialState.map((cur, index) => {
+                    this.props.state.map((cur, index) => {
                         return (
                             <CurrentPost
                                 key={index}
@@ -25,11 +24,7 @@ class Container extends React.Component{
     }
 }
 export default connect(
-    state => {
-        console.log(state);
-        return {state: state}
-    },
-    dispatch => ({
-
+    state => ({
+        state: state.posts
     })
 )(Container);
