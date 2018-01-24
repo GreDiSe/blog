@@ -9,7 +9,7 @@ import injectReducer from './helper/injectReducer';
 export default injectReducer(initialState.posts, {
     [`${CREATE_POST}`]: (state, action) => [...state, action.post],
 
-    [`${REMOVE_POST}`]: (state, action) => state.filter((cur, index) => index !== action.index),
+    [`${REMOVE_POST}`]: (state, action) => state.filter((cur, index) => index !== Number(action.index)),
 
     [`${EDIT_POST}`]: (state, action) => {
         const newState = state.concat();

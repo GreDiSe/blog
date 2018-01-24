@@ -1,11 +1,20 @@
 import React from 'react';
 import CurrentPost from './CurrentPost';
 import { connect } from 'react-redux'
+import LinkButton from '../../Components/LinkButton'
 
 class Container extends React.Component{
     render(){
         return (
             <div>
+                <div style={{right: '10px', margin: '20px'}}>
+                    <LinkButton
+                        buttonName={"Добавить"}
+                        linkTo={`/add`}
+                        bsStyle={'danger'}
+                    />
+                </div>
+
                 {
                     this.props.state.map((cur, index) => {
                         return (

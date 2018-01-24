@@ -1,11 +1,11 @@
 import React from 'react';
-import SelectedPost from './SelectedPost'
 import { connect } from 'react-redux'
+import EditPost from './EditPost'
 
-class PostContainer extends React.Component{
+class EditContainer extends React.Component{
     render(){
         return(
-            <SelectedPost
+            <EditPost
                 id={this.props.id}
                 push={this.props.push}
             />
@@ -13,9 +13,8 @@ class PostContainer extends React.Component{
     }
 }
 export default connect(
-    (state, ownProps) => ({
+    (store, ownProps) => ({
         push: ownProps.history.push,
         id: ownProps.match.params.id
     })
-)
-(PostContainer)
+)(EditContainer)

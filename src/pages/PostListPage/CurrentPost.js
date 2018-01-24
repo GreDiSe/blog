@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { Grid, Row, Image, Col, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { Grid, Row, Image, Col } from 'react-bootstrap'
+import LinkButton from '../../Components/LinkButton'
 
 const description = {
     margin: '0 0 10px 0',
@@ -16,7 +15,7 @@ const containerImageHeader = {
     gridGap: '20px'
 };
 
-class CurrentPost extends React.Component{
+export default class CurrentPost extends React.Component{
 
     render(){
         return (
@@ -29,36 +28,11 @@ class CurrentPost extends React.Component{
                             <h5 style={description}>{this.props.description}</h5>
                         </div>
 
-                        <Button
-                            bsStyle="success"
-                            style={
-                                {
-                                    float: 'right',
-                                    position: 'relative',
-                                    height: '35px',
-                                    lineHeight: '35px',
-                                    width: '100px'
-
-                                }
-                            }
-                        >
-                            <NavLink
-                                to={`/post/${this.props.index}`}
-                                style={ {
-                                    textDecoration: 'none',
-                                    position: 'absolute',
-                                    top: 0,
-                                    right: 0,
-                                    left: 0,
-                                    bottom: 0,
-                                    color: 'white'
-                                }}
-                            >
-                                Подробнее
-                            </NavLink>
-                        </Button>
-
-
+                        <LinkButton
+                            buttonName={"Подробнее"}
+                            linkTo={`/post/${this.props.index}`}
+                            bsStyle={'success'}
+                        />
 
                         <h4 style={{float: 'left', margin: '10px'}}>{this.props.date}</h4>
 
@@ -69,8 +43,3 @@ class CurrentPost extends React.Component{
         )
     }
 }
-export default connect(
-    store => ({
-        store: store
-    })
-)(CurrentPost);
