@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Grid, Row, Image, Col, Button } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
 const description = {
     margin: '0 0 10px 0',
@@ -29,10 +31,34 @@ class CurrentPost extends React.Component{
 
                         <Button
                             bsStyle="success"
-                            style={{float: 'right'}}
+                            style={
+                                {
+                                    float: 'right',
+                                    position: 'relative',
+                                    height: '35px',
+                                    lineHeight: '35px',
+                                    width: '100px'
+
+                                }
+                            }
                         >
-                            Подробнее
+                            <NavLink
+                                to={`/post/${this.props.index}`}
+                                style={ {
+                                    textDecoration: 'none',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                    left: 0,
+                                    bottom: 0,
+                                    color: 'white'
+                                }}
+                            >
+                                Подробнее
+                            </NavLink>
                         </Button>
+
+
 
                         <h4 style={{float: 'left', margin: '10px'}}>{this.props.date}</h4>
 
@@ -43,4 +69,8 @@ class CurrentPost extends React.Component{
         )
     }
 }
-export default CurrentPost
+export default connect(
+    store => ({
+        store: store
+    })
+)(CurrentPost);

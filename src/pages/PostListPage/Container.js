@@ -15,6 +15,7 @@ class Container extends React.Component{
                                 img={cur.img}
                                 description={cur.description}
                                 date={cur.date}
+                                index={index}
                             />
                         )
                     })

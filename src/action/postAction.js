@@ -6,27 +6,18 @@ import {
     REMOVE_POST
 } from "./actionTypes";
 
-export const createPost = (post, id) => ({
+export const createPost = post => ({
     type: CREATE_POST,
-    post: post,
-    id: id
+    post: post
 });
 
-export const editPost = id => ({
+export const editPost = (post, index) => ({
     type: EDIT_POST,
-    id: id
+    post: post,
+    index: index
 });
 
-export const getAllPosts = () => ({
-    type: GET_ALL_POSTS
-});
-
-export const getCurrentPost = id => ({
-    type: GET_CURRENT_POST,
-    id: id
-});
-
-export const removePost = id => ({
+export const removePost = index => ({
     type: REMOVE_POST,
-    id: id
+    index: index
 });
